@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
-import { EmailValidator, FormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 import { Router,RouterLink } from '@angular/router';
-import { HttpClient } from '@angular/common/http';
-
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -15,7 +14,8 @@ export class LoginComponent {
   email: string= '';
   username:  string = '';
   password:  string ='';
-   constructor(private http: HttpClient, private router: Router) {}
+  
+   constructor(private authService : AuthService, private router: Router){}
 
   onLogIn(){
     console.log("login clicked");
@@ -25,10 +25,11 @@ export class LoginComponent {
       username: this.username,
       password: this.password
     };
-    this.http.post('https://localhost:7148/Login', data)
-    .subscribe({
+    // this.http.post('https://localhost:7148/Login', data)
+    this.authService.login(data).subscribe({
       next:(res: any) =>{
          alert ("LogIn Success");
+         localStorage.setItem('username',this.username);
           this.router.navigate(['/dashboard']);
       },
       error:(err) =>{

@@ -1,0 +1,37 @@
+/* Full page center */
+body, html {
+  height: 100%;
+  margin: 0;
+}
+
+.LoginContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;  /* vertical center */
+  align-items: center;      /* horizontal center */
+  height: 100vh;            /* full screen height */
+  text-align: center;
+}
+.Page{
+    color: orange;
+    height: 500px;
+    width: 500px;
+    background-color: beige;
+    display: flex;
+  flex-direction: column;
+  justify-content: center;  /* vertical center */
+  align-items: center;      /* horizontal center */
+  height: 100vh;            /* full screen height */
+  text-align: center;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 250px;
+}
+
+input, button {
+  padding: 10px;
+}

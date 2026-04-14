@@ -1,1 +1,20 @@
-<p>dashboard works!</p>
+<div class="Dashboard">
+    <div class="Navbar">
+        <div class="Sidebar">
+        <div class="logo">Online Sales</div>
+        <ul class="Links-Navbar">
+            <li><a routerLink="/Dashboard">Home</a></li>
+            <li><a routerLink="products">products</a></li>
+            <li><a routerLink="/Orders">Orders</a></li>
+        </ul>
+         </div>
+        <div class="user-section">
+            <span>Welcome,{{username}}</span>
+            <button (click)="logout()">logout</button>      
+        </div>
+
+    </div>
+    <div class="MainContent">
+        <p>The Sales time is getting over, Purchase the products what you want ASAP. You had only 2 hours left.</p>
+    </div>
+</div>

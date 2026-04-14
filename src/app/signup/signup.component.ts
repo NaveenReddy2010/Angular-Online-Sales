@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
 import { FormsModule } from "@angular/forms";
 import { RouterLink } from '@angular/router';
-import { HttpClient } from '@angular/common/http';
-
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-signup',
@@ -15,7 +14,7 @@ export class SignupComponent {
   email: string = '';
   username: string = '';
   password: string = '';
-   constructor(private http: HttpClient) {}
+   constructor(private authservice: AuthService) {}
 
 onSignup() {
 
@@ -31,8 +30,8 @@ onSignup() {
     password: this.password
   };
 
-  this.http.post('https://localhost:7148/Signup', data)
-    .subscribe({
+  // this.http.post('https://localhost:7148/Signup', data)
+    this.authservice.SignUp(data).subscribe({
       next: () => alert('User Registered Successfully'),
       error: (err) => {
         console.error(err);

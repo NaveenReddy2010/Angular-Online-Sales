@@ -1,11 +1,25 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard',
-  imports: [],
+  standalone: true,
+  imports: [RouterLink],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.css'
 })
-export class DashboardComponent {
+export class DashboardComponent implements OnInit {
 
+  username: string = '';
+
+  constructor(private router: Router) {}
+
+  ngOnInit() {
+    this.username = localStorage.getItem('username') || 'User';
+  }
+
+  logout() {
+    localStorage.removeItem('username');
+    this.router.navigate(['/login']);
+  }
 }
