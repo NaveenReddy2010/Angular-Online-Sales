@@ -21,7 +21,7 @@ export class LoginComponent {
     console.log("login clicked");
     debugger;
     const data = {
-      email:'',
+      //email:'',
       username: this.username,
       password: this.password
     };

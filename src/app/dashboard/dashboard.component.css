@@ -49,8 +49,32 @@
   align-items: flex-start;
   gap: 10px;
 }
+.search-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+}
+.search-container input {
+  flex: 1;              /* 👈 takes all remaining space */
+  padding: 8px;
+}
+.add-btn {
+  margin-left: auto;    /* 👈 pushes it to far right */
+}
+.Btn-Short {
+  white-space: nowrap;
+}
+
+.add-btn {
+  padding: 6px 12px;
+}
 .MainContent{
     background-color: green;
     display: flex;
-    width: fit-content;
+     flex: 1;                
+     padding: 20px;
+    /* justify-content: center;
+    align-items: center;
+    height: 100vh; */
 }

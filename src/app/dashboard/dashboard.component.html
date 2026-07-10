@@ -1,20 +1,31 @@
 <div class="Dashboard">
     <div class="Navbar">
         <div class="Sidebar">
-        <div class="logo">Online Sales</div>
+        <div class="logo">Sales Navigator</div>
         <ul class="Links-Navbar">
-            <li><a routerLink="/Dashboard">Home</a></li>
+            <!-- <li><a routerLink="/Dashboard">Home</a></li> -->
             <li><a routerLink="products">products</a></li>
             <li><a routerLink="/Orders">Orders</a></li>
         </ul>
          </div>
         <div class="user-section">
             <span>Welcome,{{username}}</span>
-            <button (click)="logout()">logout</button>      
+            <!-- <button (click)="logout()">logout</button>       -->
+             <p>Customer</p>
         </div>
 
     </div>
     <div class="MainContent">
-        <p>The Sales time is getting over, Purchase the products what you want ASAP. You had only 2 hours left.</p>
+        <DIV>
+            <select [(ngModel)]="cardcode" name="cardcode" required>
+  <option value="" disabled selected>Select CardCode</option>
+  <option *ngFor="let customer  of customers" [value]="customer.cardCode">
+    {{customer.cardCode }}-{{customer.cardName}}
+  </option>
+</select>
+        </DIV>
+        
+         <router-outlet></router-outlet>
+        
     </div>
 </div>

@@ -1,12 +1,34 @@
 <div class="search-container">
+    <button class="Btn-Short">SortBy</button>
 
-  <input 
-    type="text" 
-    placeholder="Search products..." 
-    [(ngModel)]="searchText">
+    <input type="text" placeholder="Search products..." [(ngModel)]="searchText">
+    <span class="search-icon">🔍</span>
 
-  <span class="search-icon">🔍</span>
+    <!-- ➕ Add Button -->
+    <button class="add-btn" (click)="toggleForm()">➕</button>
+</div>
 
+<!-- 👉 Form (hidden initially) -->
+<div *ngIf="showForm" class="form-container">
+
+    <form (ngSubmit)="Add()" enctype="multipart/form-data">
+
+        <input type="text" placeholder="Enter Product Id" [(ngModel)]="id" name="id" required>
+
+        <input type="text" placeholder="Enter Product Name" [(ngModel)]="name" name="name" required>
+
+        <input type="text" placeholder="Enter Description" [(ngModel)]="description" name="description" required>
+
+        <input type="number" placeholder="Enter Price" [(ngModel)]="price" name="price" required>
+
+        <input type="number" placeholder="Enter Quantity" [(ngModel)]="quantity" name="quantity" required>
+
+        <!-- 📷 Image Upload -->
+        <input type="file" (change)="onFileSelected($event)">
+
+        <button type="submit">Save Product</button>
+
+    </form>
 </div>
 
 <p>Boom Find the Products</p>
