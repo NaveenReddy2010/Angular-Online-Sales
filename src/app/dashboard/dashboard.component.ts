@@ -6,7 +6,7 @@ import { AuthService } from '../services/auth.service';
 import { Customer } from '../Models/customers';
 @Component({
   selector: 'app-dashboard',
-  standalone: true,git status
+  standalone: true,
   imports: [RouterLink, RouterOutlet,FormsModule,CommonModule],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.css'
