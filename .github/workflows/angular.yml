@@ -10,28 +10,28 @@ jobs:
     runs-on: self-hosted
 
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v3
+      - name: Checkout code
+        uses: actions/checkout@v4
 
-    - name: Setup Node.js
-      uses: actions/setup-node@v3
-      with:
-        node-version: '18'
+      - name: Verify Node
+        run: |
+          node -v
+          npm -v
 
-    - name: Install dependencies
-      run: npm install
+      - name: Install dependencies
+        run: npm install
 
-    - name: Build Angular app
-      run: npm run build -- --configuration production
+      - name: Build Angular app
+        run: npm run build -- --configuration production
 
-    - name: Deploy to IIS
-      shell: powershell
-      run: |
-        $destination = "C:\inetpub\wwwroot\Angular online-sales"
+      - name: Deploy to IIS
+        shell: powershell
+        run: |
+          $destination = "C:\inetpub\wwwroot\Angular online-sales"
 
-        if (!(Test-Path $destination)) {
-          New-Item -ItemType Directory -Force -Path $destination
-        }
+          if (!(Test-Path $destination)) {
+            New-Item -ItemType Directory -Force -Path $destination
+          }
 
-        Remove-Item "$destination\*" -Recurse -Force -ErrorAction SilentlyContinue
-        Copy-Item "dist\online-sales\browser\*" $destination -Recurse -Force
+          Remove-Item "$destination\*" -Recurse -Force -ErrorAction SilentlyContinue
+          Copy-Item "dist\online-sales\browser\*" $destination -Recurse -Force
