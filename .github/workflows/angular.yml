@@ -23,3 +23,15 @@ jobs:
 
     - name: Build Angular app
       run: npm run build -- --configuration production
+
+    - name: Deploy to IIS
+      shell: powershell
+      run: |
+        $destination = "C:\inetpub\wwwroot\Angular online-sales"
+
+        if (!(Test-Path $destination)) {
+          New-Item -ItemType Directory -Force -Path $destination
+        }
+
+        Remove-Item "$destination\*" -Recurse -Force -ErrorAction SilentlyContinue
+        Copy-Item "dist\online-sales\browser\*" $destination -Recurse -Force
